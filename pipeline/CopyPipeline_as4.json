@@ -1,0 +1,62 @@
+{
+	"name": "CopyPipeline_as4",
+	"properties": {
+		"description": "This one is for testing.",
+		"activities": [
+			{
+				"name": "Copy_as4",
+				"type": "Copy",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "test/Trees.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "[dbo].[Trees]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": true
+					},
+					"sink": {
+						"type": "SqlSink",
+						"writeBatchSize": 10000
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"columnMappings": {
+							"Prop_0": "Index",
+							"Prop_1": "Girth (in)",
+							"Prop_2": "Height (ft)",
+							"Prop_3": "Volume(ft^3)"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_as4",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_as4",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

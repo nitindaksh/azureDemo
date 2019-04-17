@@ -1,0 +1,33 @@
+{
+	"name": "DestinationDataset_as4",
+	"properties": {
+		"description": "this one is for testing.And this one for new branch",
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"type": "AzureSqlTable",
+		"structure": [
+			{
+				"name": "Index",
+				"type": "Int32"
+			},
+			{
+				"name": "Girth (in)",
+				"type": "Decimal"
+			},
+			{
+				"name": "Height (ft)",
+				"type": "Decimal"
+			},
+			{
+				"name": "Volume(ft^3)",
+				"type": "Decimal"
+			}
+		],
+		"typeProperties": {
+			"tableName": "[dbo].[Trees]"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
